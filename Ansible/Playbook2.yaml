@@ -1,0 +1,14 @@
+---
+- name: Playbook 2 install tuned
+  hosts: all
+  become: true
+  tasks:
+  - name: install tuned
+    amsible.builtin.apt:
+      name: tuned
+      state: present
+  - name: starting tuned
+    systemd:
+      name: tuned
+      enabled: true
+      masked: no
