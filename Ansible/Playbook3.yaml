@@ -7,7 +7,7 @@
   tasks:
   - name: Changing the greeting /etc/motd
     copy: 
-    content: {{motd}}
+    content: "{{motd}}"
     dest: /etc/motd
     owner: root
     group: root
