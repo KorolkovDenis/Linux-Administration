@@ -4,8 +4,8 @@
   become: true
   tasks:
   - name: Unpacking the archive
-    ansible.builtin.unpacking_archive:
+    ansible.builtin.unarchive:
       src: https://downloads.apache.org/kafka/3.4.0/kafka_2.12-3.4.0.tgz.sha512
       dest: {{ansible_user_dir}}
-      creates: {{ansible_user_dir}}/Apach_Kafka
+      creates: {{ansible_user_dir}}/Apache_Kafka
       remote_scr: yes 
