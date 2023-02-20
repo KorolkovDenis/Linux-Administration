@@ -1,0 +1,14 @@
+---
+- name: Playbook 3 - Changing the greeting
+  hosts: all
+  become: true
+  vars:
+    motd: Home work №7.2 - Ansible
+  tasks:
+  - name: Changing the greeting /etc/motd
+    copy: 
+    content: {{motd}}
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644
