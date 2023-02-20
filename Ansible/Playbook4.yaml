@@ -1,0 +1,17 @@
+---
+- name: Playbook 4 - Greeting IP and Hostname
+  hosts: all
+  become: true
+  vars:
+    motd: Have a nice day to the sistem administrator
+  tasks:
+  - name: Greeting IP and Hostname /etc/motd
+    copy: 
+    content: 
+      - {{ motd }}
+      - {{ ansible_facts.default_ipv4.address }}
+      - {{ ansible_facts.hostname }}
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644
