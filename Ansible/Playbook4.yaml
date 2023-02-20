@@ -8,9 +8,9 @@
   - name: Greeting IP and Hostname /etc/motd
     copy: 
     content: 
-      - {{ motd }}
-      - {{ ansible_facts.default_ipv4.address }}
-      - {{ ansible_facts.hostname }}
+      - "{{ motd }}"
+      - "{{ ansible_facts.default_ipv4.address }}"
+      - "{{ ansible_facts.hostname }}"
     dest: /etc/motd
     owner: root
     group: root
