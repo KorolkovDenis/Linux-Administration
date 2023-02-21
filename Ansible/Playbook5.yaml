@@ -7,13 +7,14 @@
 
   - name: "Ensure that apache id installed"
       apt:
+      #package:
         name:
-          - apache
+          - apache2
         state: latest
 
   - name: "Start Apache"
     service:
-      name: apache
+      name: apache2
       state: started
       enabled: yes
 
@@ -25,5 +26,26 @@
   - name: "Show current IP-address"
     debug:
       msg: "http:// {{ ansible_facts.all_ipv4_addresses[1] }}:80"
-      
-    
+
+
+# msg: {{ ansible_facts['devices']['xvda']['model']['size']}}
+
+
+
+- name: Network info
+  vars:
+    msg:
+      All IP: {{ ansible_all_ipv4_addresses }}
+      ALL Interface List: {{ ansible_interfaces }}
+  debug:
+    mag: "{{ msg.split('\n') }}"
+- name: HW info
+  vars:
+    msg:
+      CPU: {{ ansible_processor }}
+      CPU Core: {{ ansible_processor_core }}
+      RAM: {{ ansible_memtotal_mb}}
+      SWAP: {{ ansible_memory_mb.swap.total }}
+  debug:
+    mag: "{{ msg.split('\n') }}"
+
