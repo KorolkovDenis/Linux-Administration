@@ -4,6 +4,7 @@
   gather_facts: true
   become: yes
   tasks:
+    - init
 
   - name: "Ensure that apache id installed"
       apt:
@@ -40,7 +41,7 @@
 - name: Check that you can connect (GET) to a page and it returns a status 200
   ansible.builtin.uri:
     url: http://www.wwewe..com
-    
+
 
 - name: Network info
   vars:
