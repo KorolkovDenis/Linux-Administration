@@ -29,7 +29,13 @@
 
 
 # msg: {{ ansible_facts['devices']['xvda']['model']['size']}}
-
+  
+  - name: Check that a page return a status 200 and fail if the word AWESOME is not in the page contents
+    ansible.builtin.uri:
+      url: http://www.weeww.com
+      return_content: true
+    register: this
+    failed_when: "'AWESOME' not in this.content"
 
 
 - name: Network info
