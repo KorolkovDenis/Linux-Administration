@@ -1,0 +1,29 @@
+---
+- name: "Install packages"
+  hosts: apache
+  gather_facts: true
+  become: yes
+  tasks:
+
+  - name: "Ensure that apache id installed"
+      apt:
+        name:
+          - apache
+        state: latest
+
+  - name: "Start Apache"
+    service:
+      name: apache
+      state: started
+      enabled: yes
+
+  - name: "Wait for port 80 to become open jn the host, don't start checking for 10 seconds"
+    wait_for: 
+      port: 80
+      delay: 10
+
+  - name: "Show current IP-address"
+    debug:
+      msg: "http:// {{ ansible_facts.all_ipv4_addresses[1] }}:80"
+      
+    
