@@ -1,7 +1,8 @@
 ---
 - name: Playbook 3 - Changing the greeting
-  hosts: all
-  become: true
+  hosts: apache
+  become: yes
+  become_user: root
   vars:
     motd: Home work №7.2 - Ansible
   tasks:

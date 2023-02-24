@@ -1,6 +1,6 @@
 ---
 - name: Playbook 2 install tuned
-  hosts: all
+  hosts: "apache"
   become: true
   tasks:
   - name: install tuned
